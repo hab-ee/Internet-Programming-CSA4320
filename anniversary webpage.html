@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anniversary Flower Bouquets</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header Section */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #6AA84F;
+            color: white;
+        }
+
+        .header .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .header .logo img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .header .search-bar {
+            flex: 1;
+            display: flex;
+            margin: 0 20px;
+        }
+
+        .header .search-bar input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px 0 0 5px;
+        }
+
+        .header .search-bar button {
+            padding: 8px 15px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .header .options {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cart-button {
+            position: relative;
+        }
+
+        .cart-button .badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 3px 8px;
+            font-size: 12px;
+        }
+
+        /* Navigation Bar */
+        .nav-bar {
+            background-color: #F4F4F4;
+            padding: 10px 20px;
+        }
+
+        .nav-bar ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-bar li {
+            margin-right: 20px;
+            cursor: pointer;
+        }
+
+        /* Main Content */
+        main {
+            display: flex;
+            margin: 20px;
+        }
+
+        .filters {
+            width: 20%;
+            padding: 20px;
+            border-right: 1px solid #ddd;
+        }
+
+        .filters h3 {
+            margin-bottom: 10px;
+        }
+
+        .filters ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .filters li {
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .content {
+            width: 80%;
+            padding: 20px;
+        }
+
+        .content-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .sort-options button {
+            margin-right: 10px;
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            background-color: white;
+            cursor: pointer;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .product-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .product-card p {
+            margin: 10px 0;
+        }
+
+        .best-seller {
+            background-color: #FFD700;
+            padding: 2px 5px;
+            font-size: 12px;
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+
+        .quantity {
+            margin: 10px 0;
+        }
+
+        .quantity input {
+            width: 50px;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="logo">
+            <img src="https://i.pinimg.com/736x/b3/d4/78/b3d4787dd03479dda11b07881338cce8.jpg" alt="Bouquet Image">
+            <h1>Blossom Botique</h1>
+        </div>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search gifts, flowers, cakes, etc." oninput="filterProducts()">
+            <button>Search</button>
+        </div>
+        <div class="options">
+            <span id="total-cost">Currency: ₹0</span>
+            <div class="cart-button">
+                <button>Cart</button>
+                <span id="cart-badge" class="badge">0</span>
+            </div>
+            
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+        <ul>
+            <li>Birthday</li>
+            <li>Anniversary</li>
+            <li>Wedding</li>
+            <li>Combos</li>
+        </ul>
+    </nav>
+
+    <!-- Main Section -->
+    <main>
+        <aside class="filters">
+            <h3>About Us</h3>
+            <ul>
+                <li>Contact</li>
+                <li>Billing Payment</li>
+                <li>Delivery</li>
+            </ul>
+        </aside>
+
+        <div class="content">
+            <div class="product-grid" id="productGrid">
+                <!-- Product Cards -->
+                <div class="product-card" data-name="Eternal Flame">
+                    <div class="best-seller">Best Seller</div>
+                    <img src="https://i.pinimg.com/736x/40/63/5a/40635a369215d623189d20802a6795da.jpg" alt="New Gift Image">
+                    <p>Eternal Flame</p>
+                    <span>₹1499</span>
+                    <div class="quantity">
+                        <input type="number" value="1" min="1" id="quantity1">
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart('Eternal Flame', 1499, 'quantity1')">Add to Cart</button>
+                </div>
+                <div class="product-card" data-name="For ever Yours">
+                    <div class="best-seller">Best Seller</div>
+                    <img src="https://i.pinimg.com/736x/4b/7e/6f/4b7e6fb4652d9e7f2338f83f3ebc9aab.jpg" alt="New Gift Image">
+                    <p>For ever Yours</p>
+                    <span>₹1299</span>
+                    <div class="quantity">
+                        <input type="number" value="1" min="1" id="quantity2">
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart('For ever Yours', 1299, 'quantity2')">Add to Cart</button>
+                </div>
+                <div class="product-card" data-name="Love's Journey">
+                    <div class="best-seller">Best Seller</div>
+                    <img src="https://i.pinimg.com/736x/51/12/a3/5112a30a2a07583095d0b77ff9757bf2.jpg" alt="New Gift Image">
+                    <p>Love's Journey</p>
+                    <span>₹1599</span>
+                    <div class="quantity">
+                        <input type="number" value="1" min="1" id="quantity3">
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart('Love\'s Journey', 1599, 'quantity3')">Add to Cart</button>
+                </div>
+                <div class="product-card" data-name="Anniversary Bliss">
+                    <div class="best-seller">Best Seller</div>
+                    <img src="https://i.pinimg.com/736x/46/68/ac/4668acd363c746e05a348f4618ef28ca.jpg" alt="New Gift Image">
+                    <p>Anniversary Bliss</p>
+                    <span>₹1999</span>
+                    <div class="quantity">
+                        <input type="number" value="1" min="1" id="quantity4">
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart('Anniversary Bliss', 1999, 'quantity4')">Add to Cart</button>
+                </div>
+                <div class="product-card" data-name="Timeless Love">
+                    <div class="best-seller">Best Seller</div>
+                    <img src="https://i.pinimg.com/736x/7f/38/63/7f386358f1992002333e441d00190d51.jpg" alt="New Gift Image">
+                    <p>Timeless Love</p>
+                    <span>₹1399</span>
+                    <div class="quantity">
+                        <input type="number" value="1" min="1" id="quantity5">
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart('Timeless Love', 1399, 'quantity5')">Add to Cart</button>
+                </div>
+                <div class="product-card" data-name="Romantic Escapade">
+                    <div class="best-seller">Best Seller</div>
+                    <img src="https://i.pinimg.com/736x/51/d8/39/51d839c6b48b6ffd4f7bfda792e767d0.jpg" alt="New Gift Image">
+                    <p>Romantic Escapade</p>
+                    <span>₹1699</span>
+                    <div class="quantity">
+                        <input type="number" value="1" min="1" id="quantity6">
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart('Romantic Escapade', 1699, 'quantity6')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 FNP. All rights reserved.</p>
+    </footer>
+
+    <script>
+        let totalCost = 0;
+        let itemCount = 0;
+
+        function addToCart(productName, price, quantityId) {
+            var quantity = document.getElementById(quantityId).value;
+            var cost = price * quantity;
+            totalCost += cost;
+            itemCount += parseInt(quantity);
+
+            document.getElementById("total-cost").textContent = "Currency: ₹" + totalCost;
+            document.getElementById("cart-badge").textContent = itemCount;
+
+            alert("Added " + quantity + " of " + productName + " to the cart. Currency: ₹" + cost);
+        }
+
+        function filterProducts() {
+            var searchQuery = document.getElementById("searchInput").value.toLowerCase();
+            var products = document.querySelectorAll(".product-card");
+
+            products.forEach(function(product) {
+                var productName = product.getAttribute("data-name").toLowerCase();
+                if (productName.includes(searchQuery)) {
+                    product.style.display = "block";
+                } else {
+                    product.style.display = "none";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
