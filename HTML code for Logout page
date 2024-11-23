@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout - Blossom Boutique</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            text-align: center;
+        }
+        header {
+            background-color: #ffcccb;
+            padding: 20px;
+        }
+        .logout-container {
+            max-width: 400px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .logout-message {
+            margin: 20px 0;
+            color: #333;
+        }
+        .button {
+            display: inline-block;
+            background-color: #ff69b4;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #ff1493;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #ffcccb;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Blossom Boutique</h1>
+</header>
+
+<div class="logout-container">
+    <h2>Logout Successful</h2>
+    <div class="logout-message">
+        <p>You have been successfully logged out.</p>
+        <p>Thank you for visiting Blossom Boutique!</p>
+    </div>
+    <a href="index.html" class="button">Return to Home</a>
+    <a href="login.html" class="button">Log In Again</a>
+</div>
+
+<footer>
+    <p>&copy; 2024 Blossom Boutique. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
